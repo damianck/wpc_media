@@ -10,7 +10,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def upload():
-    return render_template('upload_file.html')
+    return render_template('index.html')
 
 
 @app.route("/upload", methods=["POST"])
@@ -30,12 +30,15 @@ def process_order():
         AnimationOrder(email=order_request['email'], photos=order_request['photos'])
     )
 
+
+
     return jsonify({})
+
 
 @app.errorhandler(404)
 def page_not_found(e):
-    return render_template('404.html')
+    return render_template('404.html'),404
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=8888, debug=True)
+    app.run(host="127.0.0.1", port=8888, debug=True)
