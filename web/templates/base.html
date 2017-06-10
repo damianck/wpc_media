@@ -1,6 +1,7 @@
 {% set navigation_bar = [
     ('/', 'index', 'Home'),
-    ('/page', 'page', 'page')
+    ('/uploadx', 'Upload', 'Upload'),
+    ('/animation', 'Animation', 'Ordered Animation')
 ] -%}
 
 <!DOCTYPE html>
@@ -14,19 +15,32 @@
     {% endif %}
     {% block styles %}
         <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/bootstrap.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/dropzone.min.css') }}">
         <style>
-        body {
-            padding-top: 70px;
-            padding-left: 50px;
-            padding-right: 50px
-        }
-        #error {
-            text-align: center;
-        }
-    </style>
+            body {
+                padding-top: 70px;
+                padding-left: 50px;
+                padding-right: 50px
+            }
+
+            .footer {
+                color: darkgrey;
+                text-align: center;
+                margin-top: 15px;
+            }
+
+            #error {
+                text-align: center;
+            }
+        </style>
     {% endblock %}
     {% block scripts %}
         <script src="{{ url_for('.static', filename='js/bootstrap.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/vendor/dropzone.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/vendor/axios.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/order_storage.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/handle_order.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/main.js') }}"></script>
     {% endblock %}
 </head>
 <body>
@@ -56,6 +70,16 @@
 <hr/>
 
 {% block content %}
+{% endblock %}
+
+<br/>
+
+{% block footer %}
+    <nav class="navbar navbar-inverse navbar-fixed-bottom">
+        <div class="footer">
+            <p>Project made by Damian Wtorek &copy 2017</p>
+        </div>
+    </nav>
 {% endblock %}
 
 </body>

@@ -17,8 +17,9 @@
             class="order-ctrl"
             onsubmit="event.preventDefault(); handleOrderForm(this);"
         >
-            <input class="order-crtl--client-email" name="email" type="email" placeholder="Your email..."/>
-            <button type="submit" class="order-ctrl--confirm">
+            <input class="order-crtl--client-email" name="email" type="email"
+pattern="[a-zA-Z]{3,}@[a-zA-Z]{3,}[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,}" required  placeholder="Your email..."/>
+            <button type="submit" class="order-ctrl--confirm" onclick="validate()">
                 Confirm Order
             </button>
             <button type="button" class="order-ctrl--reset">
