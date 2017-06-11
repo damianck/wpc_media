@@ -23,9 +23,12 @@
                 >
                     <div class="form-inline">
                         <div class="form-group">
-                            <label for="email">Email:</label>
-                            <input class="order-crtl--client-email form-control" name="email" type="email"
-                                   pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,63}$" required placeholder="Enter your email" />
+                            <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                                <div class="input-group-addon">@</div>
+                                <input class="order-crtl--client-email form-control" name="email" type="email"
+                                       pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,63}$" required
+                                       placeholder="Enter your email"/>
+                            </div>
                         </div>
                         <button type="submit" class="order-ctrl--confirm btn btn-default">
                             Confirm Order
@@ -42,14 +45,6 @@
     <br/>
 
     {% block scripts %}
-        <script>
-            function checkEmail(str) {
-                var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-                if (!re.test(str))
-                    alert("Please enter a valid email address");
-            }
-
-        </script>
         <script src="{{ url_for('.static', filename='js/bootstrap.js') }}"></script>
         <script src="{{ url_for('static', filename='js/vendor/dropzone.js') }}"></script>
         <script src="{{ url_for('static', filename='js/vendor/axios.min.js') }}"></script>
