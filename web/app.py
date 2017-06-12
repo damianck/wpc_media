@@ -29,9 +29,6 @@ def process_order():
     services.animation_order_bus.handle_order(
         AnimationOrder(email=order_request['email'], photos=order_request['photos'])
     )
-
-
-
     return jsonify({})
 
 
