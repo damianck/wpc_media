@@ -14,11 +14,24 @@ var OrderHandler = function(orderStorage, orderService) {
             var request = {
                 'email': email,
                 'photos': orderStorage.getAllMedias()
+            };
+            if (request.photos && request.photos.length > 0) {
+                document.getElementById('error_info').classList.add('hidden');
+                orderService.requestOrder(request);
+            } else {
+                setTimeout(function() {
+                    document.getElementById('error_info').classList.add('hidden');
+                }, 5000)
+                document.getElementById('error_info').classList.remove('hidden');
             }
-
-            orderService.requestOrder(request);
         }
     }
+}
+
+var alertClose = function(id) {
+    document.getElementsByClassName('close')[0].addEventListener("click", function () {
+        document.getElementById(id).classList.add('hidden');
+    });
 }
 
 var OrderService = function(confirmationEndpoint, http) {
@@ -26,8 +39,9 @@ var OrderService = function(confirmationEndpoint, http) {
         requestOrder: function(request) {
             http.post(confirmationEndpoint, request)
                 .then(function (response) {
-                    document.getElementById('success_info').classList.remove('hidden');
                     document.getElementById('confirm_button').setAttribute("disabled", "disabled");
+                    document.getElementById('success_info').classList.remove('hidden');
+                    alertClose('success_info');
                 })
             ;
         }

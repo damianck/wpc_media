@@ -10,19 +10,18 @@ var resetButton = document.getElementsByClassName('order-ctrl--reset')[0];
 
 resetButton.addEventListener("click", function() {
     orderStorage.reset();
-    location.reload();
-
+    myDropzone.removeAllFiles(true)
+    document.getElementsByClassName('order-crtl--client-email')[0].value = ''
     document.getElementById('success_info').classList.add('hidden');
+    document.getElementById('error_info').classList.add('hidden');
     document.getElementById('confirm_button').removeAttribute("disabled");
 }, false);
-
 
 var myDropzone = new Dropzone(
     "form.upload-zone",
     {
         init: function() {
             this.on('success', function(file, data) {
-                console.log(data);
                 orderStorage.addItem(data.key);
             })
         },
@@ -32,6 +31,7 @@ var myDropzone = new Dropzone(
 );
 
 var confirmationForm = document.getElementsByClassName('order-ctrl')[0];
+
 
 var orderHandler = new OrderHandler(
     orderStorage,
