@@ -26,7 +26,8 @@ var OrderService = function(confirmationEndpoint, http) {
         requestOrder: function(request) {
             http.post(confirmationEndpoint, request)
                 .then(function (response) {
-                    console.log('success');
+                    document.getElementById('success_info').classList.remove('hidden');
+                    document.getElementById('confirm_button').setAttribute("disabled", "disabled");
                 })
             ;
         }

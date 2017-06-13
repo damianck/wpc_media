@@ -11,6 +11,9 @@ var resetButton = document.getElementsByClassName('order-ctrl--reset')[0];
 resetButton.addEventListener("click", function() {
     orderStorage.reset();
     location.reload();
+
+    document.getElementById('success_info').classList.add('hidden');
+    document.getElementById('confirm_button').removeAttribute("disabled");
 }, false);
 
 

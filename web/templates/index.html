@@ -4,6 +4,11 @@
 {% block content %}
 
     <div class="container">
+        <div class="alert alert-success fade in hidden" id="success_info">
+            <a href="#" class="close" data-dismiss="alert">&times;</a>
+            <strong>Success!</strong> Your photos has been sent successfully.
+        </div>
+
         <div class="jumbotron">
             <div class="form-group">
                 <form action="{{ url_for('upload_file') }}" class="upload-zone dropzone">
@@ -27,7 +32,7 @@
                                        placeholder="Enter your email"/>
                             </div>
                         </div>
-                        <button type="submit" class="order-ctrl--confirm btn btn-default">
+                        <button type="submit" class="order-ctrl--confirm btn btn-default" id="confirm_button">
                             Confirm Order
                         </button>
                         <button type="button" class="order-ctrl--reset btn btn-default">
